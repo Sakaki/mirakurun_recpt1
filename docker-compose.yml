@@ -33,7 +33,7 @@ services:
       # you can change to any location if you want.
       - /opt/mirakurun/run:/var/run
       - /opt/mirakurun/opt:/opt
-      - /opt/mirakurun/config:/app-config
+      - ./config:/app-config
       - /opt/mirakurun/data:/app-data
 
       # if use host's pcscd (DISABLE_PCSCD=1)
