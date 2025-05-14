@@ -1,6 +1,7 @@
 # mirakurun recpt1
 
-recpt1をenable-b25しつつビルドするDockerfileです。
+mirakurunの公式イメージにb25付きのrecpt1を入れるDockerfileです。
+デフォルトの録画コマンドがうまく動かなかったときに使ってみてください。
 
 ## 動作環境
 
@@ -14,16 +15,20 @@ pt3ドライバのインストール
 ```bash
 sudo install_pt3_driver.sh
 reboot
+
+# pt3デバイスがあるか確認
+ls /dev/pt3*
+/dev/pt3video0  /dev/pt3video1  /dev/pt3video2  /dev/pt3video3
 ```
 
 ## 使い方
 
 ```bash
 # イメージのみビルド
-docker build -t mirakurun_recpt1 .
+sudo docker build -t mirakurun_recpt1 .
 
 # docker composeで実行
-docker compose up -d
+sudo docker compose up -d
 
 # チャンネルスキャン（起動後しばらくしてから）
 curl -X PUT "http://127.0.0.1:40772/api/config/channels/scan?type=GR&setDisabledOnAdd=false&refresh=true"
